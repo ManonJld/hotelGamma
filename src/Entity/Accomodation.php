@@ -62,12 +62,12 @@ class Accomodation
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity=Photo::class, mappedBy="accomodation")
+     * @ORM\OneToMany(targetEntity=Photo::class, mappedBy="accomodation", orphanRemoval=true)
      */
     private $photos;
 
     /**
-     * @ORM\OneToMany(targetEntity=Booking::class, mappedBy="accomodation")
+     * @ORM\OneToMany(targetEntity=Booking::class, mappedBy="accomodation", orphanRemoval=true)
      */
     private $bookings;
 
@@ -269,5 +269,11 @@ class Accomodation
         }
 
         return $this;
+    }
+
+    public function getTitle()
+    {
+        return $this->getType()." ".$this->getCategory();
+
     }
 }

@@ -18,12 +18,12 @@ class Booking
     private $id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $dateStart;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $dateEnd;
 
@@ -91,4 +91,5 @@ class Booking
 
         return $this;
     }
+
 }
