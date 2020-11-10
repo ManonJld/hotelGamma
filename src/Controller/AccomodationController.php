@@ -48,6 +48,8 @@ class AccomodationController extends AbstractController
         ]);
     }
 
+
+
     /**
      * @Route("/{id}", name="accomodation_show", methods={"GET"})
      */

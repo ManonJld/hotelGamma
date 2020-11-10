@@ -10,12 +10,13 @@
     <section class="container home-content">
         <h1>Bienvenue à l'hotel Gamma</h1>
 
-        <form class="form-search">
+        <form class="form-search" method="get" action="">
             <div class="form-group">
                 <label for="search-type">Type</label>
                 <select name="type_id" id="search-type">
-                    <option>Chambre</option>
-                    <option>Appartement</option>
+                    {% for type in types %}
+                        <option value="{{ type.name }}">{{ type.name }}</option>
+                    {% endfor %}
                 </select>
             </div>
             <div class="form-group">
