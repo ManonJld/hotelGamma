@@ -12,7 +12,7 @@ class AccomodationFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         $room1 = new Accomodation();
-        $room1->setPhoto("room1.jpg");
+        $room1->setPhoto("room1.jpeg");
         $room1->setBeds("1");
         $room1->setPersons("2");
         $room1->setSize("40");
@@ -27,7 +27,7 @@ class AccomodationFixtures extends Fixture implements DependentFixtureInterface
         $this->addReference("acco-room-one", $room1);
 
         $room2 = new Accomodation();
-        $room2->setPhoto("room2.jpg");
+        $room2->setPhoto("room2.jpeg");
         $room2->setBeds("2");
         $room2->setPersons("4");
         $room2->setSize("60");
@@ -44,7 +44,7 @@ class AccomodationFixtures extends Fixture implements DependentFixtureInterface
         $this->addReference("acco-room-two", $room2);
 
         $room3 = new Accomodation();
-        $room3->setPhoto("room3.jpg");
+        $room3->setPhoto("room3.jpeg");
         $room3->setBeds("2");
         $room3->setPersons("4");
         $room3->setSize("65");
@@ -61,7 +61,7 @@ class AccomodationFixtures extends Fixture implements DependentFixtureInterface
         $this->addReference("acco-room-three", $room3);
 
         $room4 = new Accomodation();
-        $room4->setPhoto("room4.jpg");
+        $room4->setPhoto("room4.jpeg");
         $room4->setBeds("1");
         $room4->setPersons("2");
         $room4->setSize("33");
@@ -76,7 +76,7 @@ class AccomodationFixtures extends Fixture implements DependentFixtureInterface
         $this->addReference("acco-room-four",$room4);
 
         $room5 = new Accomodation();
-        $room5->setPhoto("room5.jpg");
+        $room5->setPhoto("room5.jpeg");
         $room5->setBeds("1");
         $room5->setPersons("2");
         $room5->setSize("50");
