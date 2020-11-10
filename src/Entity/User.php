@@ -187,4 +187,10 @@ class User implements UserInterface
 
         return $this;
     }
+//créé pour les crud controller
+    public function __toString()
+    {
+        return $this->getFirstName()." ".$this->getLastName();
+
+    }
 }

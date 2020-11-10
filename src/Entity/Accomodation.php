@@ -276,4 +276,5 @@ class Accomodation
         return $this->getType()." ".$this->getCategory();
 
     }
+
 }
