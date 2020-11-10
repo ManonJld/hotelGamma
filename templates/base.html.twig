@@ -14,6 +14,24 @@
 <header class="header-main">
     <div class="top-navigation container">
         <div class="address">54 route de la plage, 56100 Lorient</div>
+        <div class="nav-connexion">
+            <ul>
+                {% if app.user %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li>
+                        <a href="{{ path('admin') }}">Administration</a>
+                    </li>
+                {% endif %}
+                <li>
+                    <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{{ path('app_login') }}">Se connecter</a>
+                </li>
+            {% endif %}
+            </ul>
+        </div>
         <nav class="nav-social">
             <ul>
                 <li>
@@ -37,11 +55,12 @@
                     <a href="#">Actualités</a>
                 </li>
                 <li>
-                    <a href="{{ path('accomodation_index') }}">Nos Logements</a>
+                    <a href="{{ path('accomodation_index') }}">Nos chambres</a>
                 </li>
                 <li>
                     <a href="#">Contact</a>
                 </li>
+
             </ul>
         </nav>
     </div>
@@ -55,9 +74,9 @@
 <footer class="footer-container container">
     <div class="footer-main">
         <ul class="footer-nav">
-            <li><a href="index.html">Accueil</a></li>
+            <li><a href="{{ path('homepage') }}">Accueil</a></li>
             <li><a href="#">Actualités</a></li>
-            <li><a href="#">Nos Chambres</a></li>
+            <li><a href="{{ path('accomodation_index') }}">Nos Chambres</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
         <p>Copyright 2019 Tous droits réservés</p>

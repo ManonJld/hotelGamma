@@ -17,6 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DashboardController extends AbstractDashboardController
 {
+    //configuration de l'accès securise dans le fichier config/packages/security.yaml
     /**
      * @Route("/admin", name="admin")
      */

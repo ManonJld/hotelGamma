@@ -71,6 +71,18 @@ ul.room-features {
         background-color: black;
         color: white;
 
+        .nav-connexion{
+            ul {
+                list-style-type: none;
+
+                li {
+                    a {
+                        color: #ccc;
+                        margin-left: 1em;
+                    }
+                }
+            }
+        }
         .nav-social {
             ul {
                 list-style-type: none;
