@@ -54,7 +54,7 @@ class AccomodationController extends AbstractController
     public function show(Accomodation $accomodation): Response
     {
         return $this->render('accomodation/show.html.twig', [
-            'accomodation' => $accomodation,
+            'accomodation' => $accomodation
         ]);
     }
 

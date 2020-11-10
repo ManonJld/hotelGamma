@@ -1,46 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accomodation{% endblock %}
+{% block title %}Nos chambres{% endblock %}
 
 {% block body %}
-    <h1>Accomodation</h1>
+    <section class="page-header room-header container">
+        <img src="{{ asset('uploads/accomodations/' ~ accomodation.photo) }}" class="img-responsive" alt="Gamma Hotel">
+    </section>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ accomodation.id }}</td>
-            </tr>
-            <tr>
-                <th>Photo</th>
-                <td>{{ accomodation.photo }}</td>
-            </tr>
-            <tr>
-                <th>Beds</th>
-                <td>{{ accomodation.beds }}</td>
-            </tr>
-            <tr>
-                <th>Persons</th>
-                <td>{{ accomodation.persons }}</td>
-            </tr>
-            <tr>
-                <th>Size</th>
-                <td>{{ accomodation.size }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ accomodation.price }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ accomodation.description }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <section class="container room-content">
+        <article class="room-description">
+            <div class="room-description-images">
+                <img src="{{ asset('uploads/accomodations/' ~ accomodation.photo) }}" class="img-responsive" alt="Appartement standard">
+                {% for photo in accomodation.photos %}
+                    <img src="{{asset('uploads/accomodations/' ~ photo.filename) }}" class="img-responsive" alt="Appartement standard">
+                {% endfor %}
 
-    <a href="{{ path('accomodation_index') }}">back to list</a>
 
-    <a href="{{ path('accomodation_edit', {'id': accomodation.id}) }}">edit</a>
+            </div>
+            <div class="room-description-content">
+                <h1>{{ accomodation.type }}{{ accomodation.category }}</h1>
+                <ul class="room-features">
 
-    {{ include('accomodation/_delete_form.html.twig') }}
+                    <li><i class="fa fa-bed"></i> {{ accomodation.beds }}</li>
+                    <li><i class="fa fa-user"></i> {{ accomodation.persons }}</li>
+                    <li><i class="fa fa-expand"></i> {{ accomodation.size }}<sup>2</sup></li>
+                    <li><i class="fa fa-euro"></i> {{ accomodation.price }}</li>
+                </ul>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque, consectetur dicta dignissimos dolor, doloremque dolores error, excepturi minus molestias nam nemo non placeat provident quis reiciendis repellendus veniam veritatis.</p>
+                <h2>Équipements</h2>
+                <ul class="room-amenities">
+                    {% for amenity in accomodation.amenities %}
+                        <li><i class="{{ amenity.icon }}"></i> {{ amenity.name }}</li>
+                    {% endfor %}
+
+                </ul>
+                <form class="form-booking">
+                    <fieldset>
+                        <legend>Réservation</legend>
+                        <div class="form-group">
+                            <label for="date-start">Date d'arrivée</label>
+                            <input type="date" id="date-start">
+                        </div>
+                        <div class="form-group">
+                            <label for="date-end">Date de départ</label>
+                            <input type="date" id="date-end">
+                        </div>
+                        <button type="submit" class="button button-primary">
+                            <i class="fa fa-check"></i>
+                            Réserver
+                        </button>
+                    </fieldset>
+                </form>
+                <br>
+                <a class="button button-primary" href="{{ path('accomodation_index') }}">Retourner à la liste des chambres</a>
+            </div>
+        </article>
+
+
+{#        <a href="{{ path('accomodation_edit', {'id': accomodation.id}) }}">edit</a>#}
+
+{#        {{ include('accomodation/_delete_form.html.twig') }}#}
+    </section>
+
+
 {% endblock %}

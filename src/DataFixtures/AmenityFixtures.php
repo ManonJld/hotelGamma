@@ -13,31 +13,31 @@ class AmenityFixtures extends Fixture
     {
         $cuisine = new Amenity();
         $cuisine->setName("Cuisine");
-        $cuisine->setIcon("fas fa-utensils");
+        $cuisine->setIcon("fa fa-cutlery");
         $manager->persist($cuisine);
         $this->addReference("ame-cuisine", $cuisine);
 
         $access = new Amenity();
         $access->setName("Accessibilité");
-        $access->setIcon("fas fa-wheelchair");
+        $access->setIcon("fa fa-wheelchair");
         $manager->persist($access);
         $this->addReference("ame-access", $access);
 
         $wifi = new Amenity();
         $wifi->setName("Wifi");
-        $wifi->setIcon("fas fa-wifi");
+        $wifi->setIcon("fa fa-wifi");
         $manager->persist($wifi);
         $this->addReference("ame-wifi", $wifi);
 
         $shower = new Amenity();
         $shower->setName("Douche");
-        $shower->setIcon("fas fa-shower");
+        $shower->setIcon("fa fa-shower");
         $manager->persist($shower);
         $this->addReference("ame-shower", $shower);
 
         $cafe = new Amenity();
         $cafe->setName("Machine à café");
-        $cafe->setIcon("fas fa-coffee");
+        $cafe->setIcon("fa fa-coffee");
         $manager->persist($cafe);
         $this->addReference("ame-cafe", $cafe);
 

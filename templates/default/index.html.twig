@@ -1,8 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DefaultController!{% endblock %}
+{% block title %}Bienvenue!{% endblock %}
 
 {% block body %}
+
+    <section class="page-header home-header container">
+        <img src="{{ asset('images/home-header-bg.jpg') }}" class="img-responsive" alt="Gamma Hotel">
+    </section>
     <section class="container home-content">
         <h1>Bienvenue à l'hotel Gamma</h1>
 
@@ -31,24 +35,7 @@
         <h2>Découvrez nos chambres</h2>
         <div class="grid grid-rooms">
             {% for accomodation in accomodations %}
-                <article>
-                    <header>
-                        <img src="{{  asset('uploads/accomodations/' ~ accomodation.photo) }}" class="img-responsive" alt="Chambre Standard">
-                    </header>
-                    <footer>
-                        <h3>{{ accomodation.type}} {{ accomodation.category }} </h3>
-                        <ul class="room-features">
-                            <li><i class="fa fa-bed"></i> {{ accomodation.beds }}</li>
-                            <li><i class="fa fa-user"></i> {{ accomodation.persons }}</li>
-                            <li><i class="fa fa-expand"></i> {{ accomodation.size}}<sup>2</sup></li>
-                            <li><i class="fa fa-euro"></i> {{ accomodation.price}}</li>
-                        </ul>
-                        <a href="accomodation.html" class="button button-primary">
-                            <i class="fa fa-eye"></i>
-                            Voir plus
-                        </a>
-                    </footer>
-                </article>
+                {% include 'accomodation/_oneBlock.html.twig' %}
             {% endfor %}
 
         </div>

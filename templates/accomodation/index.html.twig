@@ -1,45 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accomodation index{% endblock %}
+{% block title %}Nos logements{% endblock %}
 
 {% block body %}
-    <h1>Accomodation index</h1>
+    <section class="container home-content">
+    <h1>Nos logement</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Photo</th>
-                <th>Beds</th>
-                <th>Persons</th>
-                <th>Size</th>
-                <th>Price</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for accomodation in accomodations %}
-            <tr>
-                <td>{{ accomodation.id }}</td>
-                <td>{{ accomodation.photo }}</td>
-                <td>{{ accomodation.beds }}</td>
-                <td>{{ accomodation.persons }}</td>
-                <td>{{ accomodation.size }}</td>
-                <td>{{ accomodation.price }}</td>
-                <td>{{ accomodation.description }}</td>
-                <td>
-                    <a href="{{ path('accomodation_show', {'id': accomodation.id}) }}">show</a>
-                    <a href="{{ path('accomodation_edit', {'id': accomodation.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+
+        <h2>Découvrez nos chambres</h2>
+        <div class="grid grid-rooms">
+{#            insertion d'un template pour l'affichage des chambre dans la boucle for#}
+            {% for accomodation in accomodations %}
+                {% include 'accomodation/_oneBlock.html.twig' %}
+            {% endfor %}
+
+        </div>
+
 
     <a href="{{ path('accomodation_new') }}">Create new</a>
+        </section>
 {% endblock %}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" />
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
@@ -25,19 +25,19 @@
         </nav>
     </div>
     <div class="main-navigation container">
-        <a href="index.html">
-            <img src="images/logo.png" class="logo" alt="Gamma Hotel">
+        <a href="{{ path('homepage') }}">
+            <img src="{{ asset('images/logo.png') }}" class="logo" alt="Gamma Hotel">
         </a>
         <nav>
             <ul>
                 <li>
-                    <a href="{{ path('homepage') }}" class="active">Accueil</a>
+                    <a href="{{ path('homepage') }}">Accueil</a>
                 </li>
                 <li>
                     <a href="#">Actualités</a>
                 </li>
                 <li>
-                    <a href="#">Nos Logements</a>
+                    <a href="{{ path('accomodation_index') }}">Nos Logements</a>
                 </li>
                 <li>
                     <a href="#">Contact</a>
@@ -47,9 +47,7 @@
     </div>
 </header>
 
-<section class="page-header home-header container">
-    <img src="images/home-header-bg.jpg" class="img-responsive" alt="Gamma Hotel">
-</section>
+
 
 {% block body %}{% endblock %}
 
