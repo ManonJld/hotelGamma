@@ -32,23 +32,27 @@
                     {% for amenity in accomodation.amenities %}
                         <li><i class="{{ amenity.icon }}"></i> {{ amenity.name }}</li>
                     {% endfor %}
-
                 </ul>
                 <form class="form-booking">
                     <fieldset>
                         <legend>Réservation</legend>
-                        <div class="form-group">
-                            <label for="date-start">Date d'arrivée</label>
-                            <input type="date" id="date-start">
-                        </div>
-                        <div class="form-group">
-                            <label for="date-end">Date de départ</label>
-                            <input type="date" id="date-end">
-                        </div>
-                        <button type="submit" class="button button-primary">
-                            <i class="fa fa-check"></i>
-                            Réserver
-                        </button>
+                        {% if app.user %}
+                            {{ form(form) }}
+                            {% else %}
+                            <a class="button button-primary" href="{{ path('app_login') }}">Se connecter</a>
+                        {% endif %}
+{#                        <div class="form-group">#}
+{#                            <label for="date-start">Date d'arrivée</label>#}
+{#                            <input type="date" id="date-start">#}
+{#                        </div>#}
+{#                        <div class="form-group">#}
+{#                            <label for="date-end">Date de départ</label>#}
+{#                            <input type="date" id="date-end">#}
+{#                        </div>#}
+{#                        <button type="submit" class="button button-primary">#}
+{#                            <i class="fa fa-check"></i>#}
+{#                            Réserver#}
+{#                        </button>#}
                     </fieldset>
                 </form>
                 <br>

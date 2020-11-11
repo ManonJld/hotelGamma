@@ -1,0 +1,10 @@
+{% extends "@EasyAdmin/page/content.html.twig" %}
+
+{% block page_title %}
+    Bienvenue sur l'interface d'administration {{ app.user.firstName }} {{ app.user.lastName }}
+{% endblock %}
+{% block page_content %}
+    <p>Cliquez sur un élément de la liste de gauche pour accéder à la création, modification ou suppression d'un élément.</p>
+    <a class="button" href="{{ path('homepage') }}">Retour à l'accueil</a>
+
+{% endblock %}

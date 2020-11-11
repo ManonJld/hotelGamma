@@ -2,12 +2,16 @@
 
 {% block title %}Bienvenue!{% endblock %}
 
-{% block body %}
-
+{% block imageTop %}
     <section class="page-header home-header container">
         <img src="{{ asset('images/home-header-bg.jpg') }}" class="img-responsive" alt="Gamma Hotel">
     </section>
-    <section class="container home-content">
+{% endblock %}
+
+{% block body %}
+
+
+
         <h1>Bienvenue à l'hotel Gamma</h1>
 
         <form class="form-search" method="get" action="">
@@ -40,5 +44,5 @@
             {% endfor %}
 
         </div>
-    </section>
+
 {% endblock %}

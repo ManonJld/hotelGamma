@@ -57,6 +57,14 @@ h1 {
     grid-row-gap: 5px;
 }
 
+.table{
+    border: 2px solid black;
+    border-collapse: collapse;
+    td, th{
+        border: 1px solid black;
+    }
+}
+
 /* GENERAL */
 ul.room-features {
     display: flex;
@@ -64,6 +72,7 @@ ul.room-features {
     list-style-type: none;
     padding: 0;
 }
+
 
 /* HEADER */
 .header-main {

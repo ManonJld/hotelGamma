@@ -17,13 +17,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DashboardController extends AbstractDashboardController
 {
-    //configuration de l'accès securise dans le fichier config/packages/security.yaml
+    //configuration de l'accès sécurisé dans le fichier config/packages/security.yaml
     /**
      * @Route("/admin", name="admin")
      */
     public function index(): Response
     {
-        return parent::index();
+        return $this->render('admin/index.html.twig');
     }
 
     public function configureDashboard(): Dashboard
@@ -35,7 +35,7 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Logements', 'icon class', Accomodation::class);
+        yield MenuItem::linkToCrud('Chambres', 'icon class', Accomodation::class);
         yield MenuItem::linkToCrud('Equipements', 'icon class', Amenity::class);
         yield MenuItem::linkToCrud('Réservations', 'icon class', Booking::class);
         yield MenuItem::linkToCrud('Catégories', 'icon class', Category::class);

@@ -3,8 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Accomodation;
+use App\Entity\Booking;
+use App\Entity\User;
 use App\Form\AccomodationType;
+use App\Form\BookingType;
 use App\Repository\AccomodationRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,6 +31,7 @@ class AccomodationController extends AbstractController
 
     /**
      * @Route("/new", name="accomodation_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request): Response
     {
@@ -51,17 +56,42 @@ class AccomodationController extends AbstractController
 
 
     /**
-     * @Route("/{id}", name="accomodation_show", methods={"GET"})
+     * @Route("/{id}", name="accomodation_show", methods={"GET", "POST"})
      */
-    public function show(Accomodation $accomodation): Response
+    public function show(Accomodation $accomodation, Request $request): Response
     {
+        $booking = new Booking();
+        $user = $this->getUser();
+        $booking->setUser($user);//permet de préselectionner l'utilisateur connecté
+        $booking->setAccomodation($accomodation);//permet de préselectionner l'accomodation en cours
+        $form = $this->createForm(BookingType::class, $booking, [
+//pour envoyer les données du formulaire
+            'method' => 'GET'
+        ]);
+
+        $form->handleRequest($request);//verifie les données du formulaire
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $booking = $form->getData(); //récupère les données du formulaire
+            //enregistre en base de données
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($booking);
+            $entityManager->flush();
+//            message si la réservation s'est bien passée
+            $this->addFlash('success', "Réservation enregistrée avec succès");
+
+            return $this->redirectToRoute('user_show', ['id' => ($booking->getUser())->getId()]);
+        }
+
         return $this->render('accomodation/show.html.twig', [
-            'accomodation' => $accomodation
+            'accomodation' => $accomodation,
+            'form' => $form->createView(),
         ]);
     }
 
     /**
      * @Route("/{id}/edit", name="accomodation_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Accomodation $accomodation): Response
     {
@@ -82,6 +112,7 @@ class AccomodationController extends AbstractController
 
     /**
      * @Route("/{id}", name="accomodation_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Accomodation $accomodation): Response
     {
