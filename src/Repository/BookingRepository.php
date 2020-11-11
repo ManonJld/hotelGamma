@@ -22,19 +22,21 @@ class BookingRepository extends ServiceEntityRepository
     // /**
     //  * @return Booking[] Returns an array of Booking objects
     //  */
-    /*
-    public function findByExampleField($value)
+
+    public function findMostBooking()
     {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('b.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $query = $this->createQueryBuilder('b');
+        $query = $query->addSelect($this->count('b'))
+            ->addSelect('accomodation')
+            ->where('b.accomodation = accomodation.id')
+            ->groupBy('accomodation.id')
+            ->orderBy('b', 'DESC')
+            ->setMaxResults(3);
+
+
+        return $query->getQuery()->getResult();
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Booking

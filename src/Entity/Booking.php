@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\BookingRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=BookingRepository::class)
@@ -19,11 +20,16 @@ class Booking
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\GreaterThan("today", message ="La dade de début ne devrait pas être antérieure à la date du jour ")
      */
     private $dateStart;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\Expression(
+     *     "this.getDateStart() < this.getDateEnd()",
+     *     message="La date de fin ne doit pas être antérieure à la date de début"
+     * )
      */
     private $dateEnd;
 

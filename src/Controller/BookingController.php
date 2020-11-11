@@ -38,13 +38,13 @@ class BookingController extends AbstractController
         $form = $this->createForm(BookingType::class, $booking);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($booking);
-            $entityManager->flush();
+            if ($form->isSubmitted() && $form->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($booking);
+                $entityManager->flush();
 
-            return $this->redirectToRoute('booking_index');
-        }
+                return $this->redirectToRoute('booking_index');
+            }
 
         return $this->render('booking/new.html.twig', [
             'booking' => $booking,
