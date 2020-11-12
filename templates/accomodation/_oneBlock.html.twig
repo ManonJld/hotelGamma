@@ -4,7 +4,7 @@
             <img src="{{  asset('uploads/accomodations/' ~ accomodation.photo) }}" class="img-responsive" alt="Chambre Standard">
         </header>
         <footer>
-            <h3>{{ accomodation.type}} {{ accomodation.category }} </h3>
+            <h3>{{ accomodation.type}} {{ accomodation.category }} {{ accomodation.id }}</h3>
             <ul class="room-features">
                 <li><i class="fa fa-bed"></i> {{ accomodation.beds }}</li>
                 <li><i class="fa fa-user"></i> {{ accomodation.persons }}</li>

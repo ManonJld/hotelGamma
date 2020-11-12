@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Photo;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
@@ -22,7 +23,7 @@ class PhotoCrudController extends AbstractCrudController
         return [
             IdField::new('id'),
             TextField::new('filename'),
-            IntegerField::new('accomodation.id')
+            AssociationField::new('accomodation')
 
         ];
     }

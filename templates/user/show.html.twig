@@ -8,10 +8,6 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
                 <th>Email</th>
                 <td>{{ user.email }}</td>
             </tr>
@@ -36,7 +32,7 @@
         </tr>
         {% for booking in app.user.bookings %}
                 <tr>
-                    <td>{{ booking.accomodation.title }}</td>
+                    <td>{{ booking.accomodation.title }} {{ booking.accomodation.id }}</td>
                     <td>{{ booking.dateStart|format_datetime('short', 'none', locale='fr') }}</td>
                     <td>{{ booking.dateEnd|format_datetime('short', 'none', locale='fr') }}</td>
                 </tr>

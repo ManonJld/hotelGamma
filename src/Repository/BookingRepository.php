@@ -2,9 +2,11 @@
 
 namespace App\Repository;
 
+use App\Entity\Accomodation;
 use App\Entity\Booking;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use function Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Booking|null find($id, $lockMode = null, $lockVersion = null)
@@ -25,16 +27,23 @@ class BookingRepository extends ServiceEntityRepository
 
     public function findMostBooking()
     {
-        $query = $this->createQueryBuilder('b');
-        $query = $query->addSelect($this->count('b'))
-            ->addSelect('accomodation')
-            ->where('b.accomodation = accomodation.id')
-            ->groupBy('accomodation.id')
-            ->orderBy('b', 'DESC')
-            ->setMaxResults(3);
+        $in = $this->getEntityManager()->getRepository(Booking::class)
+            ->createQueryBuilder('b')
+            //todo : voir à quoi sert et comment fonctionne le IDENTITY
+            ->select('IDENTITY(b.accomodation)')
+            ->orderBy('count(b.id)', 'DESC')
+            ->groupBy("b.accomodation")
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+
+        $querry = $this->getEntityManager()->getRepository(Accomodation::class)
+            ->createQueryBuilder('a')
+            ->andWhere('a.id IN (:in) ')
+            ->setParameter('in', $in);
 
 
-        return $query->getQuery()->getResult();
+        return $querry->getQuery()->getResult();
     }
 
 

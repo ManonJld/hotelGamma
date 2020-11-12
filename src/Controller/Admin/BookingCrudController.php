@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Booking;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
@@ -26,8 +27,8 @@ class BookingCrudController extends AbstractCrudController
         return [
             DateTimeField::new('dateStart'),
             DateTimeField::new('DateEnd'),
-            TextField::new('user'),
-            IntegerField::new('accomodation.id')
+            AssociationField::new('user'),
+            AssociationField::new('accomodation')
         ];
     }
 

@@ -277,4 +277,9 @@ class Accomodation
 
     }
 
+    public function __toString()
+    {
+        return $this->getType()." ".$this->getCategory()." ".$this->getId();
+    }
+
 }
