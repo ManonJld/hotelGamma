@@ -27,4 +27,22 @@ class DefaultController extends AbstractController
 
     }
 
+    /**
+     * @Route("/resultats", name="homepage_results", methods={"GET"})
+     */
+    public function results(TypeRepository $typeRepository, AccomodationRepository $accomodationRepository, Request $request)
+    {
+        $type_id = $request->query->get('type_id');
+        $min = $request->query->get('min');
+        $max= $request->query->get('max');
+
+        $types = $typeRepository->findAll();
+        $accomodations = $accomodationRepository->findRequest($type_id, $min, $max);
+        return $this->render('default/results.html.twig', [
+        'accomodations' => $accomodations,
+        'types' =>$types,
+            'type_id' => $type_id,
+            'min'=>$min,
+            'max'=>$max]);
+    }
 }

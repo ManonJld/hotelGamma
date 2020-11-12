@@ -19,7 +19,8 @@
                 {% if app.user %}
                     {% if is_granted('ROLE_ADMIN') %}
                         <li>
-                            <a href="{{ path('admin') }}">Administration</a>
+{#                            todo: A revoir, ma class active ne fonctinne pas#}
+                            <a href="{{ path('admin') }}" {% if(app.request.pathInfo == path('homepage')) %} class="active" {% endif %}>Administration</a>
                         </li>
                     {% endif %}
                 <li>

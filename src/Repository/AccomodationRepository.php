@@ -22,7 +22,21 @@ class AccomodationRepository extends ServiceEntityRepository
     // /**
     //  * @return Accomodation[] Returns an array of Accomodation objects
     //  */
+    public function findRequest($type_id, $min, $max)
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->where('a.type = :type')
+            ->andWhere('a.price < :max')
+            ->andWhere('a.price > :min')
+            ->setParameter('type', $type_id)
+            ->setParameter('min', $min)
+            ->setParameter('max', $max);
 
+
+        return $qb->getQuery()->getResult();
+
+
+    }
 
 
     /*

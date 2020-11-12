@@ -19,17 +19,17 @@
                 <label for="search-type">Type</label>
                 <select name="type_id" id="search-type">
                     {% for type in types %}
-                        <option value="{{ type.id }}">{{ type.name }}</option>
+                        <option value="{{ type.id }}" {% if type.id == type_id %} selected {% endif %}>{{ type.name }}</option>
                     {% endfor %}
                 </select>
             </div>
             <div class="form-group">
                 <label for="search-price-from">Prix min</label>
-                <input type="number" id="search-price-from" min="0" value="0" name="min">
+                <input type="number" id="search-price-from" min="0" {% if min%} value="{{ min }}" {% else %} value="0" {% endif %} name="min">
             </div>
             <div class="form-group">
                 <label for="search-price-to">Prix max</label>
-                <input type="number" id="search-price-to" min="0" value="200" name="max">
+                <input type="number" id="search-price-to" min="0" {% if max%} value="{{ max }}" {% else %} value="200" {% endif %}  name="max">
             </div>
             <button type="submit" class="button button-primary">
                 <i class="fa fa-search"></i>
