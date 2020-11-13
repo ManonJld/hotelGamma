@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/booking")
  */
-//TODO: gérer la sécurité de l'accès aux liens avec IsGranted
+
 class BookingController extends AbstractController
 {
     /**
@@ -30,7 +30,6 @@ class BookingController extends AbstractController
 
     /**
      * @Route("/new", name="booking_new", methods={"GET","POST"})
-     *
      */
     public function new(Request $request): Response
     {
