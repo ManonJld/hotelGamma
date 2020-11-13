@@ -29,8 +29,8 @@ class BookingRepository extends ServiceEntityRepository
     {
         $in = $this->getEntityManager()->getRepository(Booking::class)
             ->createQueryBuilder('b')
-            //todo : voir à quoi sert et comment fonctionne le IDENTITY
-            ->select('IDENTITY(b.accomodation)')
+            //todo : voir à quoi sert et comment fonctionne le IDENTITY (je l'ai enlevé,et ça marche tjrs)
+            ->select('(b.accomodation)')
             ->orderBy('count(b.id)', 'DESC')
             ->groupBy("b.accomodation")
             ->setMaxResults(3)

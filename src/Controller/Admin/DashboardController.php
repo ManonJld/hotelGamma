@@ -41,6 +41,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Catégories', 'icon class', Category::class);
         yield MenuItem::linkToCrud('Photos', 'icon class', Photo::class);
         yield MenuItem::linkToCrud('Types', 'icon class', Type::class);
-        yield MenuItem::linkToCrud('Users', 'icon class', User::class);
+        yield MenuItem::linkToCrud('Utilisateurs', 'icon class', User::class);
     }
 }

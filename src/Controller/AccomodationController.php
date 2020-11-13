@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Form\AccomodationType;
 use App\Form\BookingType;
 use App\Repository\AccomodationRepository;
+use App\Repository\BookingRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -58,7 +59,7 @@ class AccomodationController extends AbstractController
     /**
      * @Route("/{id}", name="accomodation_show", methods={"GET", "POST"})
      */
-    public function show(Accomodation $accomodation, Request $request): Response
+    public function show(Accomodation $accomodation, Request $request, BookingRepository $bookingRepository): Response
     {
         $booking = new Booking();
         $user = $this->getUser();

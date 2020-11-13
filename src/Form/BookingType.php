@@ -27,4 +27,6 @@ class BookingType extends AbstractType
             'data_class' => Booking::class,
         ]);
     }
+
+
 }
