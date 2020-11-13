@@ -24,13 +24,12 @@ class BookingRepository extends ServiceEntityRepository
     // /**
     //  * @return Booking[] Returns an array of Booking objects
     //  */
-
+//retourne l'id des 3 logements les plus réservés
     public function findMostBooking()
     {
         $in = $this->getEntityManager()->getRepository(Booking::class)
             ->createQueryBuilder('b')
-            //todo : voir à quoi sert et comment fonctionne le IDENTITY (je l'ai enlevé,et ça marche tjrs)
-            ->select('(b.accomodation)')
+            ->select('(b.accomodation)') //
             ->orderBy('count(b.id)', 'DESC')
             ->groupBy("b.accomodation")
             ->setMaxResults(3)

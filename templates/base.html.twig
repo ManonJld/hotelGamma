@@ -19,8 +19,7 @@
                 {% if app.user %}
                     {% if is_granted('ROLE_ADMIN') %}
                         <li>
-{#                            todo: A revoir, ma class active ne fonctinne pas#}
-                            <a href="{{ path('admin') }}" {% if(app.request.pathInfo == path('homepage')) %} class="active" {% endif %}>Administration</a>
+                            <a href="{{ path('admin') }}">Administration</a>
                         </li>
                     {% endif %}
                 <li>
@@ -53,13 +52,13 @@
         <nav>
             <ul>
                 <li>
-                    <a href="{{ path('homepage') }}">Accueil</a>
+                    <a href="{{ path('homepage') }}" {% if(app.request.pathInfo == path('homepage')) %} class="active" {% endif %}>Accueil</a>
                 </li>
                 <li>
                     <a href="#">Actualités</a>
                 </li>
                 <li>
-                    <a href="{{ path('accomodation_index') }}">Nos chambres</a>
+                    <a href="{{ path('accomodation_index') }}" {% if(app.request.pathInfo == path('accomodation_index')) %} class="active" {% endif %}>Nos chambres</a>
                 </li>
                 <li>
                     <a href="#">Contact</a>
